@@ -1,0 +1,46 @@
+{%  extends 'namo/main.html' %}
+{% block content %}
+{% load static %}
+<br>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Welcome!</strong> You should choose the language here.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<br>
+<h2> Select the language in which you want to give the test.</h2>
+<br>
+<div class="row">
+
+    <figure class="figure">
+  <img src="{% static 'images/comp_1.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+</figure>
+    <figure class="figure">
+  <img src="{% static 'images/amp_1.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+</figure>
+    <figure class="figure">
+  <img src="{% static 'images/amp_2.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+</figure>
+    <img src="{% static 'images/prog.png' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+</figure>
+
+</div>
+
+
+<div class="row">
+{% for cont in sub %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{cont.card_pic.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{cont.name}}</h5>
+            <p class="card-text">{{cont.info}}</p>
+            <a href="{% url 'test' cont.id %}" class="btn btn-primary">Go to test</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

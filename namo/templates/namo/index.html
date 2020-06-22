@@ -1,0 +1,72 @@
+{%  extends 'namo/main.html' %}
+{% block content %}
+{% load static %}
+<br>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Welcome !</strong> You should check out these tests to analyze your knowledge.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="row">
+  <img src="{% static 'images/python.jpg' %}" alt="..." class="img-thumbnail">
+  <img src="{% static 'images/java.jpg' %}" alt="..." class="img-thumbnail">
+  <img src="{% static 'images/cpro.jpg' %}" alt="..." class="img-thumbnail">
+  <img src="{% static 'images/sql_2.png' %}" alt="..." class="img-thumbnail">
+</div>
+
+<br>
+<h3>Most popular programming languages</h3>
+<br>
+
+<div class="container ml-4">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">2019</th>
+      <th scope="col">2018</th>
+      <th scope="col">2017</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Javascript</td>
+      <td>Javascript</td>
+      <td>SQL</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Python</td>
+      <td>Java</td>
+      <td>Java</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Java</td>
+      <td>Python</td>
+      <td>python</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<br>
+<h3>Quiz on our website </h3>
+
+<p>
+  Quiz are a grat way of testing our knowledge and we are here you to provide an intermidiate level programming quiz
+  on most of the popular programming languages in market .
+  <br>
+  <h5> Important instructions</h5>
+  <ol>
+    <li>No negative marking</li>
+    <li>+1 for every correct answer</li>
+    <li> Total questions = 5 </li>
+    <li>All questions are necessary</li>
+  </ol>
+</p>
+
+{% endblock %}

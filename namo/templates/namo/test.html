@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>test</title>
+  </head>
+  <body>
+    <h1>{{namn}} Programming Test</h1>
+
+<div class="container mt-4" >
+        {% for question in question %}
+             <form action="{% url 'save' question.id %}" method="POST">
+                  {% csrf_token %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Q.{{question.id}}  {{question.ques}}</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="option" id="exampleRadios1" value="{{question.option1}}">
+                            <label class="form-check-label" for="exampleRadios1">
+                              {{question.option1}}
+                            </label><br>
+                            <input class="form-check-input" type="radio" name="option" id="exampleRadios1" value="{{question.option2}}">
+                            <label class="form-check-label" for="exampleRadios1">
+                              {{question.option2}}
+                            </label><br>
+                            <input class="form-check-input" type="radio" name="option" id="exampleRadios1" value="{{question.option3}}">
+                            <label class="form-check-label" for="exampleRadios1">
+                              {{question.option3}}
+                            </label><br>
+                            <input class="form-check-input" type="radio" name="option" id="exampleRadios1" value="{{question.option4}}">
+                            <label class="form-check-label" for="exampleRadios1">
+                              {{question.option4}}
+                            </label><br>
+                            <br>
+                        </div>
+                          <button type="submit" class="btn btn-success">Save</button> <!--button type = submit is very important-->
+
+                    </div>
+
+                </div>
+             </form>
+        {% endfor %}
+
+        {% if question.has_other_pages %}  <!--agar iske baad or pehle pages hain to-->
+            <div class="row mt-4 ">
+                <div class="col-lg-6">
+                        {% if question.has_previous %}   <!--agar iske piche page hai to-->
+                            <a class="btn btn-primary" href="?page={{question.previous_page_number}}">Previous</a> <!--is se pichle page no. pe jao-->
+                        {% endif %}
+
+                        {% if question.has_next %}       <!--agar iske aage page hai to-->
+                            <a class="btn btn-primary" href="?page={{question.next_page_number}}" >Next</a> <!--is se agle page no. pe jao-->
+                        {% else %}                       <!--agar iske aage page hi nahi hai to result display kar do -->
+                            <a class="btn btn-dark" href="{% url 'result' %}">View Result</a> <!--result vale url pe jao-->
+                        {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        <!--ye bus questions ko scroll karne ke lie ek niche scroller banaega-->
+        <div class="container mt-4" >
+        <div class="card col-lg-6">
+            <div class="card-body">
+                <h5>Jump To Question</h5>
+                {% if question.has_other_pages %}
+                    <div class="pagination">
+                    {% for i in question.paginator.page_range %}
+                        {% if question.number == i %}
+                            <a class="active btn btn-primary"><span>{{i}} <span class="sr-only">(current)</span></span></a>
+                        {% else %}
+                            <a class="btn btn-light" href="?page={{i}}">{{i}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+

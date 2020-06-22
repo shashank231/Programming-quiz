@@ -1,0 +1,20 @@
+{%  extends 'namo/main.html' %}
+{% block content %}
+{% load static %}
+
+<h3>My profile</h3>
+
+<div class="media">
+  <img src="{{profile.pic.url}}" class="mr-3" alt="...">
+  <div class="media-body">
+    <h3 class="mt-0">Username : {{user.username}}</h3>
+    <h4> Name - {{profile.name}} <br>
+        Email - {{user.email}}   <br>
+        Phone - {{profile.phone}}   <br>
+      Note - {{profile.note}}</h4>
+      <br>
+      <a class="btn btn-primary" href="{% url 'update' %}" role="button">update</a>
+  </div>
+</div>
+
+{% endblock %}
